@@ -1,0 +1,10 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center"><i class="material-icons">music_video</i>BandBuilder<i class='material-icons'>build</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a [routerLink]="['/profile/', loggedUser.id]">Profile</a></li>
+            <li><a (click)='logoutFromService()'>Logout</a></li>
+        </ul>
+    </div>
+</nav>
+

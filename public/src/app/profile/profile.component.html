@@ -1,0 +1,38 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo center"><i class="material-icons">music_video</i>BandBuilder<i class='material-icons'>build</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a [routerLink]="['/profile', loggedUser.id, 'edit']">Edit Profile</a></li>
+            <li><a (click)='logoutFromService()'>Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div *ngIf="loggedUser">
+<h4>My Profile</h4>
+  <table>
+    <tr>
+      <td>Full Name</td>
+      <td>{{loggedUser.first_name}} {{loggedUser.last_name}}</td>
+    </tr>
+    <tr>
+      <td>About Me</td>
+      <td>{{loggedUser.about_me}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{loggedUser.email}}</td>
+    </tr>
+    <tr>
+      <td>Skill</td>
+      <td>{{loggedUser.skill}}</td>
+    </tr>
+    <tr>
+      <td>Instruments</td>
+      <td>{{loggedUser.instruments}}</td> <!--Fix-->
+    </tr>
+    <tr>
+      <td>Genres</td>
+      <td>{{loggedUser.genres}}</td> <!--Fix-->
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,2 @@
+<h2 *ngIf="loggedUser">Welcome to BandBuilder, {{loggedUser.first_name}}! Tell us a little about yourself on the next page.</h2>
+<button [routerLink]="['/profile', loggedUser.id, 'edit']" class='btn'>Continue to Edit Profile</button>

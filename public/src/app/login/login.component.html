@@ -1,0 +1,19 @@
+<form *ngIf='userToLogin' (submit)="loginFromService()">
+  <table>
+    <tr>
+      <td>Email</td>
+      <td><input type="text" name="email" [(ngModel)]=userToLogin.email></td>
+    </tr>
+    <tr>
+      <td>Password</td>
+      <td><input type="password" name="password" [(ngModel)]=userToLogin.password></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button type='submit' class='btn'>Login</button></td>
+    </tr>
+  </table>
+</form>
+
+<p>Back to <a (click)="goToRegister()">registration</a></p>
+<p *ngFor="let error of errors">{{errors}}</p>

@@ -1,0 +1,34 @@
+{
+  "name": "MongooseDashBoard",
+  "version": "1.0.0",
+  "description": "wat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jeffrey Ahn, Tim Winfred, Shahunkrakirian",
+  "license": "ISC",
+  "dependencies": {
+    "@agm/core": "^1.0.0-beta.3",
+    "@types/googlemaps": "^3.30.8",
+    "angular2-materialize": "^15.1.10",
+    "bcrypt": "^2.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.15.0",
+    "cors": "^2.8.4",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4",
+    "express-flash": "0.0.2",
+    "express-session": "^1.15.6",
+    "hammerjs": "^2.0.8",
+    "jquery": "^2.2.4",
+    "jsonwebtoken": "^8.2.1",
+    "materialize-css": "^0.100.2",
+    "mongoose": "^5.0.17",
+    "mongoose-validate": "0.0.5",
+    "passport-jwt": "^4.0.0",
+    "socket.io": "^2.1.0",
+    "validator": "^10.1.0"
+  }
+}
