@@ -1,3 +1,8 @@
 div{
     margin-left: 210px;
 }
+nav{
+    border-radius: 10px;
+    opacity: .7;
+    background-color:#171717
+}

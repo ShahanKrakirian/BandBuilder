@@ -5,19 +5,19 @@ const bcrypt = require('bcrypt');
 module.exports = {
 
     index: (request, response) => {
-        Product.find({}, (err, products) => {
-            if (err) {
-                console.log("Error encountered while retrieving products.");
-                response.redirect('/api/index');
+        User.find({}, (err, users) => {
+            if (!users) {
+                console.log("Error encountered while retrieving users.");
+                response.json({message: "Could not retrieve users."});
             }
             else{
-                console.log("Successfully found all products.");
-                response.json(products);
+                console.log("Successfully found all users.");
+                response.json(users);
             }
         })
     },
 
-    users_user: (request, response) => {
+    usersUser: (request, response) => {
         console.log('hi');
         User.findOne({_id: request.params.id}, (err, user) => {
             console.log(user);
@@ -25,54 +25,77 @@ module.exports = {
                 console.log("Errors encountered while finding user.");
                 response.redirect('/api/index');
             }
-            else {
+            else{
                 console.log("Sucessfully found user.");
                 response.json(user);
             }
         })
     },
 
-    new_product: (request, response) => {
-        Product.create(request.body, (err, product) => {
-            if (err) {
-                response.json(err);
+    editProfile: (request, response) => {
+        console.log("REQUEST BODY: ", request.body);
+        User.findOne({_id: request.body._id}, (err, user) => {
+            if (!user) {
+                response.json({message: "Couldn't find user to update."});
             }
             else{
-                console.log("Successfully created product.");
-                response.json(product);
-            }
-        })
-    },
-
-    update_product: (request, response) => {
-        Product.findOne({id: request.params.id}, (errors, product) => {
-            if (errors) {
-                console.log("Couldn't find that product in our database");
-            }
-            else {
-                console.log("Okay, got the product to update...");
-                Product.update(product, {name: request.body.name, quantity: request.body.quantity, price: request.body.price}, (errors, product) => {
-                    if (errors) {
-                        response.json(errors);
-                    }
-                    else {
-                        console.log("Updated the product!");
-                        response.json(product);
-                    }
+                User.update(user, {first_name: request.body.first_name, last_name: request.body.last_name, bio: request.body.bio, email: request.body.email, skill: request.body.skill}, (err, updated) => {
+                    response.json(updated);
                 })
             }
         })
     },
 
-    delete_product: (request, response) => {
-        Product.findOneAndRemove({id: request.params.id}, (err, product) => {
-            if (err) {
-                console.log("Error encountered while deleting product.");
-                response.redirect('/api/index');
+    addInstrument: (request, response) => {
+        User.findOne({_id: request.body._id}, (err, user) => {
+            if (!user) {
+                response.json({message: "Couldn't find user to update."});
             }
-            else{
-                console.log("Deleted the product!");
-                response.json(product);
+            else {
+                User.update(user, {$push: {instruments: request.body.instruments}}, (err, updated) => {
+                    response.json(updated);
+                })
+            }
+        })
+    },
+
+    removeInstrument: (request, response) => {
+        User.findOne({_id: request.body._id}, (err, user) => {
+            if (!user) {
+                response.json({message: "Couldn't find user to update."});
+            }
+            else {
+                User.update(user, {$pull: {instruments: request.body.instruments}}, (err, updated) => {
+                    response.json(updated);
+                })
+            }
+        })
+    },
+
+    addGenre: (request, response) => {
+        console.log("REQUEST BODY: ", request.body);
+        User.findOne({_id: request.body._id}, (err, user) => {
+            if (!user) {
+                response.json({message: "Couldn't find user to update."});
+            }
+            else {
+                User.update(user, {$push: {genres: request.body.genres}}, (err, updated) => {
+                    response.json(updated);
+                })
+            }
+        })
+    },
+
+    removeGenre: (request, response) => {
+        console.log("REQUEST BODY: ", request.body);
+        User.findOne({_id: request.body._id}, (err, user) => {
+            if (!user) {
+                response.json({message: "Couldn't find user to update."});
+            }
+            else {
+                User.update(user, {$pull: {genres: request.body.genres}}, (err, updated) => {
+                    response.json(updated);
+                })
             }
         })
     },
@@ -137,7 +160,7 @@ module.exports = {
         })
     },
 
-    check_login: (request, response) => {
+    checkLogin: (request, response) => {
         response.json({email: request.session.email});
     },
 

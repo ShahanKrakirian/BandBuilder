@@ -5,7 +5,7 @@ const controller = require('./../controllers/controller');
 module.exports = (app) => {
     //START USER LOGIN/REGISTRATION
     app.get('/api/checklogin', (request, response) => {
-        controller.check_login(request, response);
+        controller.checkLogin(request, response);
     })
 
     app.post('/api/register', (request, response) => {
@@ -34,7 +34,7 @@ module.exports = (app) => {
     })
 
     app.get('/api/getUser/:id', (request, response) => {
-        controller.users_user(request,response);
+        controller.usersUser(request,response);
     })
     
     app.post('/api/products/new', (request, response) => {
@@ -47,6 +47,21 @@ module.exports = (app) => {
 
     app.delete('/api/products/delete/:id', (request, response) => {
         controller.delete_product(request, response);
+    })
+    app.post('/api/addInstrument', (request, response) => {
+        controller.addInstrument(request, response);
+    })
+    app.post('/api/removeInstrument', (request, response) => {
+        controller.removeInstrument(request, response);
+    })
+    app.post('/api/addGenre', (request, response) => {
+        controller.addGenre(request, response);
+    })
+    app.post('/api/removeGenre', (request, response) => {
+        controller.removeGenre(request, response);
+    })
+    app.post('/api/editProfile', (request,response) => {
+        controller.editProfile(request, response);
     })
     app.all("*", (request, response, next) => {
         response.sendFile(path.resolve("./public/dist/public/index.html"));

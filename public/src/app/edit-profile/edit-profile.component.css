@@ -1,0 +1,16 @@
+div{
+    margin-left: 210px;
+}
+select{
+    background-color:#d1d4c8e6;
+    opacity: .7;
+
+}
+.inline-block{
+    display:inline-block;
+}
+nav{
+    border-radius: 10px;
+    opacity: .7;
+    background-color:#171717
+}

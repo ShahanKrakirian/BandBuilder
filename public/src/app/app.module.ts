@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ProfileWelcomeComponent } from './profile-welcome/profile-welcome.component';
 import { ProfileComponent } from './profile/profile.component';
+import { VisitProfileComponent } from './visit-profile/visit-profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     EditProfileComponent,
     ProfileWelcomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    VisitProfileComponent
   ],
   imports: [
     HttpClientModule,

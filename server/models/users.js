@@ -8,11 +8,11 @@ var userSchema = new mongoose.Schema({
     email: {type: String, required: [true, "Enter your email address"]}, //ADD VALIDATIONS
     password: {type: String, required: [true, "Must have a password"], minlength: [8, "Password must be at least 8 characters"]},
     profile_image: {type: String},
-    about_me: {type: String},
-    latitude: {type: String},
-    longitude: {type: String},
-    instruments: [{instrument: {type: String}}],
-    genres: [{genre: {type: String}}],
+    bio: {type: String},
+    latitude: {type: Number},
+    longitude: {type: Number},
+    instruments: [],
+    genres: [],
     skill: {type: String}
 }, {timestamps: true});
 

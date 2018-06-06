@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     this._route.params.subscribe((params: Params) => {
       this._httpService.getUser(params.id).subscribe(data => {
-        this.loggedUser = {id: params['id'], first_name: data['first_name'], last_name: data['last_name'], email: data['email'], skill: data['skill']};
+        this.loggedUser = data;
       })
     })
   }

@@ -14,7 +14,6 @@ export class HttpService {
   }
 
   login(userToLogin){
-    console.log(userToLogin);
     return this._http.post('/api/login', userToLogin);
   }
 
@@ -36,8 +35,31 @@ export class HttpService {
   }
 
   updateLocation(loggedUser){
-    console.log(loggedUser);
     return this._http.post('api/updateLocation', loggedUser);
+  }
+
+  getAllUsers(){
+    return this._http.get('/api/getUsers');
+  }
+
+  addInstrument(user){
+    return this._http.post('/api/addInstrument', user);
+  }
+  
+  removeInstrument(user){
+    return this._http.post('/api/removeInstrument', user);
+  }
+
+  addGenre(user){
+    return this._http.post('/api/addGenre', user);
+  }
+
+  removeGenre(user){
+    return this._http.post('/api/removeGenre', user);
+  }
+
+  editProfile(user){
+    return this._http.post('/api/editProfile', user);
   }
 
 }
