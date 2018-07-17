@@ -27,8 +27,9 @@ export class AppComponent {
   checkLoginStatus(){
     this._httpService.checkLogin().subscribe((data: any) => {
       if (data.email){
-        this._router.navigate(['/home']);
+        // this._router.navigate(['/home']);
       } else {
+        console.log("cannot find user, redirecting to register")
         this._router.navigate(['/register']);
       }
     })

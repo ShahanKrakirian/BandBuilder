@@ -18,9 +18,8 @@ module.exports = {
     },
 
     usersUser: (request, response) => {
-        console.log('hi');
+        console.log(request.params);
         User.findOne({_id: request.params.id}, (err, user) => {
-            console.log(user);
             if (err) {
                 console.log("Errors encountered while finding user.");
                 response.redirect('/api/index');
@@ -33,7 +32,6 @@ module.exports = {
     },
 
     editProfile: (request, response) => {
-        console.log("REQUEST BODY: ", request.body);
         User.findOne({_id: request.body._id}, (err, user) => {
             if (!user) {
                 response.json({message: "Couldn't find user to update."});
@@ -60,12 +58,13 @@ module.exports = {
     },
 
     removeInstrument: (request, response) => {
-        User.findOne({_id: request.body._id}, (err, user) => {
+
+        User.findOne({_id: request.params.id}, (err, user) => {
             if (!user) {
                 response.json({message: "Couldn't find user to update."});
             }
             else {
-                User.update(user, {$pull: {instruments: request.body.instruments}}, (err, updated) => {
+                User.update(user, {$pull: {instruments: request.body.Instrument}}, (err, updated) => {
                     response.json(updated);
                 })
             }
@@ -87,13 +86,13 @@ module.exports = {
     },
 
     removeGenre: (request, response) => {
-        console.log("REQUEST BODY: ", request.body);
-        User.findOne({_id: request.body._id}, (err, user) => {
+
+        User.findOne({_id: request.params.id}, (err, user) => {
             if (!user) {
                 response.json({message: "Couldn't find user to update."});
             }
             else {
-                User.update(user, {$pull: {genres: request.body.genres}}, (err, updated) => {
+                User.update(user, {$pull: {genres: request.body.Genre}}, (err, updated) => {
                     response.json(updated);
                 })
             }
@@ -132,16 +131,12 @@ module.exports = {
     },
 
     login: (request, response) => {
-        console.log("FIRST BODY PRINT: ", request.body)
         User.findOne({email: request.body.email}, (err, user) => {
             if (!user) {
                 response.json({errors: "Email does not exist in our records."})
             }
             else {
-                console.log("SECOND BODY PRINT: ", request.body);
-                console.log("Before location update: ", user);
                 User.update(user, {latitude: request.body.latitude, longitude: request.body.longitude}, (err, updatedUser) => {
-                    console.log("After location update: ", updatedUser);
                 })
                 bcrypt.compare(request.body.password, user.password, (error, res) => {
                     if (res){
@@ -184,8 +179,37 @@ module.exports = {
 
     updateLocation: (request, response) => {
         console.log(request.body);
-    }
+    },
     //END USER LOGIN/REGISTRATION
 
+    getSearchResults: (request, response) => {
 
+        //Based on search criteria...
+        if (request.body.searchBy == "instrument"){
+            User.find({instruments: request.body.input}, (err, users) => {
+                if (!users){
+                    response.json({message: "No users met criteria."});
+                } else {
+                    response.json(users);
+                }
+            })   
+        } else if (request.body.searchBy == "genre"){
+            User.find({genres: request.body.input}, (err, users) => {
+                if (!users){
+                    response.json({message: "No users met criteria."});
+                } else {
+                    response.json(users);
+                }
+            })
+        //Skill
+        } else {
+            User.find({skill: request.body.input}, (err, users) => {
+                if (!users){
+                    response.json({message: "No users met criteria."});
+                } else {
+                    response.json(users);
+                }
+            })
+        }
+    }
 }

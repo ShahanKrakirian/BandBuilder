@@ -1,3 +1,58 @@
-
-
-<h1>HI</h1>
+<div class="navbar-fixed">
+    <nav *ngIf="loggedUser">
+        <div class="nav-wrapper">
+            <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
+            <ul class="right hide-on-small-and-down">
+                <li><a [routerLink]="['/profile', loggedUser._id]">Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+            <a href="/home" class="brand-logo left hide-on-med-and-up">BandBuilder</a>
+            <ul class="right hide-on-med-and-up">
+                <li><a [routerLink]="['/profile', loggedUser._id]">Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br>
+<div *ngIf="loggedUser" class="row align-center">
+    <div class="col s12 m6 offset-m5 back">
+        <h5 class='center-align'>{{profileUser.first_name}}'s Profile</h5>
+        <hr>
+        <br>
+        <table>
+            <tr>
+                <td>Full Name:</td>
+                <td>{{profileUser.first_name}} {{profileUser.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Bio:</td>
+                <td>{{profileUser.bio}}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{profileUser.email}}</td>
+            </tr>
+            <tr>
+                <td>Skill Level:</td>
+                <td>{{profileUser.skill}}</td>
+            </tr>
+            <tr>
+                <td>Instruments:</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let instrument of profileUser.instruments">{{instrument}}</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Genres:</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let genre of profileUser.genres">{{genre}}</li>
+                    </ul>
+                </td>
+            </tr>            
+        </table>
+    </div>
+</div>

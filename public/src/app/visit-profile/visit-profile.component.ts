@@ -9,6 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class VisitProfileComponent implements OnInit {
   loggedUser: any;
+  profileUser: any;
 
   constructor(
     private _httpService: HttpService,
@@ -17,7 +18,21 @@ export class VisitProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("WORKING??"); //yes......
+    this._httpService.getSessionUser().subscribe((data:any) => {
+      this.loggedUser = data;
+    })
+    this._route.params.subscribe((params: Params) => {
+      console.log(params);
+      this._httpService.getUser(params.id).subscribe((data:any) => {
+        this.profileUser = data;
+      })
+    })
+  }
+
+  logoutFromService(){
+    this._httpService.logout().subscribe((data:any) => {
+      this._router.navigate(['/login']);
+    })
   }
 
 }

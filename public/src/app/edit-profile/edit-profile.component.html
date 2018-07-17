@@ -1,45 +1,78 @@
-<nav>
-    <div>
-        <a href="#!" class="brand-logo center"><i class="material-icons">music_video</i>BandBuilder<i class='material-icons'>build</i></a>
-        <ul *ngIf="loggedUser" class="right hide-on-med-and-down">
-            <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
-            <li><a (click)='logoutFromService()'>Logout</a></li>
-        </ul>
+<div class="navbar-fixed">
+    <nav *ngIf="loggedUser">
+        <div class="nav-wrapper">
+            <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
+            <ul class="right hide-on-small-and-down">
+                <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+            <a href="/home" class="brand-logo left hide-on-med-and-up">BandBuilder</a>
+            <ul class="right hide-on-med-and-up">
+                <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div *ngIf="loggedUser" class="row up">
+    <div class="col s12 m5 back">
+        <br>
+        <h5>Edit Profile</h5>
+        <form (submit)="editProfileFromService(loggedUser)">
+            <label for="first_name">First Name:</label>
+            <input type="text" name='first_name' id='first_name' value='{{loggedUser.first_name}}' [(ngModel)]=loggedUser.first_name>
+            <label for="last_name">Last Name:</label>
+            <input type="text" name='last_name' id='last_name' value='{{loggedUser.last_name}}' [(ngModel)]=loggedUser.last_name>
+            <label for="bio">Bio:</label>
+            <textarea name="bio" id="bio" cols="30" rows="10" [(ngModel)]=loggedUser.bio></textarea>
+            <label for="email">Email:</label>
+            <input type="text" name='email' id='email' value='{{loggedUser.email}}'  [(ngModel)]=loggedUser.email>
+            <label for="skill">Skill</label>
+            <select name="skill" id="skill" class='browser-default'  [(ngModel)]=loggedUser.skill>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+            <br>
+            <button class='btn' type='submit'>Update Profile</button>
+            <br>
+        </form>
+        <br>
     </div>
-</nav>
-<div *ngIf="loggedUser">
-<h4>Edit Profile</h4>
-<form (submit)="editProfileFromService(loggedUser)">
-    <label for="first_name">First Name:</label>
-    <input type="text" name='first_name' id='first_name' value='{{loggedUser.first_name}}' [(ngModel)]=loggedUser.first_name>
-    <label for="last_name">Last Name:</label>
-    <input type="text" name='last_name' id='last_name' value='{{loggedUser.last_name}}' [(ngModel)]=loggedUser.last_name>
-    <label for="bio">Bio:</label>
-    <textarea name="bio" id="bio" cols="30" rows="10" [(ngModel)]=loggedUser.bio></textarea>
-    <label for="email">Email:</label>
-    <input type="text" name='email' id='email' value='{{loggedUser.email}}'  [(ngModel)]=loggedUser.email>
-    <label for="skill">Skill</label>
-    <select name="skill" id="skill" class='browser-default'  [(ngModel)]=loggedUser.skill>
-        <option value="Beginner">Beginner</option>
-        <option value="Intermediate">Intermediate</option>
-        <option value="Advanced">Advanced</option>
-    </select>
-    <button class='btn' type='submit'>Update Profile</button>
-</form>
-<br>
-<!--Instruments-->
-<label for="instruments">Instrument</label>
-<select name="instruments" id="instruments" class='browser-default'  [(ngModel)]=loggedUser.instruments>
-    <option *ngFor="let instrument of instruments" value="{{instrument}}">{{instrument}}</option>
-</select>
-<button (click)="addInstrumentFromService()" class='btn'>Add Instrument</button>
-<button (click)="removeInstrumentFromService()" class="btn">Remove Instrument</button>
-<br>
-<!--Genres-->
-<label for="genres">Genre</label>
-<select name="genres" id="genres" class='browser-default' [(ngModel)]=loggedUser.genres>
-    <option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</option>
-</select>
-<button (click)="addGenreFromService()" class='btn' type='submit'>Add Genre</button>
-<button (click)='removeGenreFromService()' class="btn" type='submit'>Remove Genre</button>
+    <div class="col s12 m6 offset-m1 back">
+        <br>
+        <h5>Edit Instruments</h5>
+        <br>
+        <table>
+            <tr *ngFor="let instrument of loggedUser.instruments">
+                <td>{{instrument}}</td>
+                <td><a><i (click)="removeInstrumentFromService(instrument)" class="material-icons">clear</i></a></td>
+            </tr>
+        </table>
+        <!--Instruments-->
+        <label for="instruments">Add Instrument</label>
+        <select name="instruments" id="instruments" class='browser-default'  [(ngModel)]=loggedUser.instruments>
+            <option *ngFor="let instrument of instruments" value="{{instrument}}">{{instrument}}</option>
+        </select>
+        <br>
+        <button (click)="addInstrumentFromService()" class='btn'>Add Instrument</button>
+        <br><br>
+        <!--Genres-->
+        <h5>Edit Genres</h5>
+        <br>
+        <table>
+            <tr *ngFor="let genre of loggedUser.genres">
+                <td>{{genre}}</td>
+                <td><a><i (click)="removeGenreFromService(genre)" class="material-icons">clear</i></a></td>
+            </tr>
+        </table>
+        <label for="genres">Add Genre</label>
+        <select name="genres" id="genres" class='browser-default' [(ngModel)]=loggedUser.genres>
+            <option *ngFor="let genre of genres" value="{{genre}}">{{genre}}</option>
+        </select>
+        <br>
+        <button (click)="addGenreFromService()" class='btn' type='submit'>Add Genre</button>
+        <br><br>
+    </div>
 </div>

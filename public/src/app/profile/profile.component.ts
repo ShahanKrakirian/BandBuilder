@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
     this._route.params.subscribe((params: Params) => {
       this._httpService.getUser(params.id).subscribe(data => {
         this.loggedUser = data;
+        console.log(this.loggedUser);
       })
     })
   }

@@ -1,42 +1,29 @@
-<div>
-  <form *ngIf="userToAdd && passwordCheck" (submit)="registerFromService()">
-    <table>
-      <tr>
-        <td>First Name</td>
-        <td><input type="text" name="first_name" [(ngModel)]=userToAdd.first_name></td>
-      </tr>
-      <tr>
-        <td>Last Name</td>
-        <td><input type="text" name="last_name" [(ngModel)]=userToAdd.last_name></td>
-      </tr>
-      <tr>
-        <td>Email</td>
-        <td><input type="text" name="email" [(ngModel)]=userToAdd.email></td>
-      </tr>
-      <tr>
-        <td>Password</td>
-        <td><input type="password" name="password" [(ngModel)]=passwordCheck.password></td>
-      </tr>
-      <tr>
-        <td>Confirm Password</td>
-        <td><input type="password" name="password_confirm" [(ngModel)]=passwordCheck.confirm_password></td>
-      </tr>
-      <tr>
-        <td>Approximate Skill Level</td>
-        <td>        
-          <select [(ngModel)]="userToAdd.skill" name="skill" class='browser-default'>
-            <option value="Beginner" selected>Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><button class='btn' type='submit'>Register</button></td>
-      </tr>
-    </table>
-  </form>
-  <p>Already have an account? Login <a (click)="goToLogin()">here.</a></p>
-</div>
-<p *ngFor="let error of errors">{{error}}</p>
+<div class="container">
+    <div class="row height hide-on-small-only"></div>
+    <div class="row">
+      <div class="col s12 m7 offset-m5 back  center-align">
+        <br>
+        <h5>Sign Up</h5>
+        <br>
+        <form *ngIf="userToAdd && passwordCheck" (submit)="registerFromService()">
+            <input type="text" name="first_name" [(ngModel)]=userToAdd.first_name placeholder="First Name">
+            <input type="text" name="last_name" [(ngModel)]=userToAdd.last_name placeholder="Last Name">
+            <input type="text" name="email" [(ngModel)]=userToAdd.email placeholder="Email@sample.com">
+            <input type="password" name="password" [(ngModel)]=passwordCheck.password placeholder="Password">
+            <input type="password" name="password_confirm" [(ngModel)]=passwordCheck.confirm_password placeholder="Confirm Password">
+              <select [(ngModel)]="userToAdd.skill" name="skill" class='browser-default'>
+                <option value="Beginner" selected>Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            <br>
+            <button class='btn' type='submit'>Register</button>
+            <br><br>
+            <p>Already have an account? Login <a (click)="goToLogin()">here.</a></p>
+            <br>
+            <p *ngFor="let error of errors">{{error}}</p>
+            <br>
+        </form>
+      </div>
+    </div>
+  </div>

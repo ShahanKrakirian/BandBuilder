@@ -1,19 +1,20 @@
-<form *ngIf='userToLogin' (submit)="loginFromService()">
-  <table>
-    <tr>
-      <td>Email</td>
-      <td><input type="text" name="email" [(ngModel)]=userToLogin.email></td>
-    </tr>
-    <tr>
-      <td>Password</td>
-      <td><input type="password" name="password" [(ngModel)]=userToLogin.password></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td><button type='submit' class='btn'>Login</button></td>
-    </tr>
-  </table>
-</form>
-
-<p>Back to <a (click)="goToRegister()">registration</a></p>
-<p *ngFor="let error of errors">{{errors}}</p>
+<div class="container">
+  <div class="row height hide-on-small-only"></div>
+  <div class="row">
+    <div class="col s12 m7 offset-m5 back  center-align">
+      <br>
+      <h5>Log In to Your Account</h5>
+      <br>
+      <form *ngIf='userToLogin' (submit)="loginFromService()">
+          <input type="text" name="email" [(ngModel)]=userToLogin.email placeholder="Email@sample.com">
+          <input type="password" name="password" [(ngModel)]=userToLogin.password placeholder="Password">
+          <button type='submit' class='btn'>Login</button>
+          <br><br>
+          <p>Create an account <a (click)="goToRegister()">here.</a></p>
+          <br>
+          <p *ngFor="let error of errors">{{error}}</p>
+          <br>
+      </form>
+    </div>
+  </div>
+</div>

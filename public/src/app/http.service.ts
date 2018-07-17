@@ -45,21 +45,25 @@ export class HttpService {
   addInstrument(user){
     return this._http.post('/api/addInstrument', user);
   }
-  
-  removeInstrument(user){
-    return this._http.post('/api/removeInstrument', user);
+
+  removeInstrument(instrument, loggedUserId){
+    return this._http.post('/api/removeInstrument/' + loggedUserId, {"Instrument": instrument});
   }
 
   addGenre(user){
     return this._http.post('/api/addGenre', user);
   }
 
-  removeGenre(user){
-    return this._http.post('/api/removeGenre', user);
-  }
-
   editProfile(user){
     return this._http.post('/api/editProfile', user);
+  }
+
+  getSearchResults(searchParameters){
+    return this._http.post('/api/getSearchResults', searchParameters);
+  }
+
+  removeGenre(genre, loggedUserId){
+    return this._http.post('/api/removeGenre/' + loggedUserId, {"Genre": genre});
   }
 
 }

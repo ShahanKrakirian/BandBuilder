@@ -1,24 +1,58 @@
-<nav>
-    <div>
-        <a href="#!" class="brand-logo center"><i class="material-icons">music_video</i>BandBuilder<i class='material-icons'>build</i></a>
-        <ul *ngIf="loggedUser" class="right hide-on-med-and-down">
-            <li><a [routerLink]="['/profile', loggedUser._id, 'edit']">Edit Profile</a></li>
-            <li><a (click)='logoutFromService()'>Logout</a></li>
-        </ul>
+<div class="navbar-fixed">
+    <nav *ngIf="loggedUser">
+        <div class="nav-wrapper">
+            <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
+            <ul class="right hide-on-small-and-down">
+                <li><a [routerLink]="['/profile', loggedUser._id, 'edit']">Edit Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+            <a href="/home" class="brand-logo left hide-on-med-and-up">BandBuilder</a>
+            <ul class="right hide-on-med-and-up">
+                <li><a [routerLink]="['/profile', loggedUser._id, 'edit']">Edit Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br>
+<div *ngIf="loggedUser" class="row align-center">
+    <div class="col s12 m6 offset-m5 back">
+        <h5 class='center-align'>My Profile</h5>
+        <hr>
+        <br>
+        <table>
+            <tr>
+                <td>Full Name:</td>
+                <td>{{loggedUser.first_name}} {{loggedUser.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Bio:</td>
+                <td>{{loggedUser.bio}}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{loggedUser.email}}</td>
+            </tr>
+            <tr>
+                <td>Skill Level:</td>
+                <td>{{loggedUser.skill}}</td>
+            </tr>
+            <tr>
+                <td>Instruments:</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let instrument of loggedUser.instruments">{{instrument}}</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Genres:</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let genre of loggedUser.genres">{{genre}}</li>
+                    </ul>
+                </td>
+            </tr>            
+        </table>
     </div>
-</nav>
-<div *ngIf="loggedUser">
-<h4>My Profile</h4>
-    Full Name:
-    {{loggedUser.first_name}} {{loggedUser.last_name}} <br><br>
-    Bio:
-    {{loggedUser.bio}} <br><br>
-    Email:
-    {{loggedUser.email}}  <br><br>
-    Skill:
-    {{loggedUser.skill}}  <br><br>
-    Instruments:
-    {{loggedUser.instruments}}  <br><br> <!--Fix-->
-    Genres:
-    {{loggedUser.genres}} <br><br>  <!--Fix-->
 </div>

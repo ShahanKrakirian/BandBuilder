@@ -1,12 +1,76 @@
-<nav *ngIf="loggedUser">
-    <div class="nav-wrapper">
-        <a href="#!" class="brand-logo center"><i class="material-icons">music_video</i>BandBuilder<i class='material-icons'>build</i></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
-            <li><a (click)='logoutFromService()'>Logout</a></li>
-        </ul>
+<div class="navbar-fixed">
+    <nav *ngIf="loggedUser">
+        <div class="nav-wrapper">
+            <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
+            <ul class="right hide-on-small-and-down">
+                <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+            <a href="/home" class="brand-logo left hide-on-med-and-up">BandBuilder</a>
+            <ul class="right hide-on-med-and-up">
+                <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
+                <li><a (click)='logoutFromService()'>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<br>
+<div class="row">
+    <div class="col s12 m7 align-center">
+        <h3 class="flow-text">&nbsp;&nbsp;Welcome, {{loggedUser.first_name}}!</h3>
+        <div id="map-canvas"></div>
+        <br>
     </div>
-</nav>
-<h3>Welcome, {{loggedUser.first_name}}!</h3>
-<a [routerLink]="['/user/92839472']">Test</a>
-<div id="map-canvas"></div>
+    <div class="col s12 m6 l5 center-align back">
+        <br>
+        <p *ngIf="noResults" class="align-right">No results found.</p>
+        <div class="row align-center">
+            <h5>Find Your BandMates</h5>
+            <hr>
+        </div>
+        <label for="searchBy">Filter By:</label>
+        <select id="searchBy" class="browser-default" [(ngModel)]="searchResults.searchBy">
+            <option value="instrument">Instrument</option>
+            <option value="genre">Genre</option>
+            <option value="skill">Skill Level (Beginner, Intermediate, Advanced)</option>
+        </select>
+        <br><br>
+        <form *ngIf="searchResults.searchBy == 'instrument'" (submit)="getSearchResultsFromService()">
+            <label for="searchBy">Select:</label>
+            <select name="searchBy" id="searchBy" class="browser-default" [(ngModel)]="searchResults.input">
+                <option value="Bass">Bass</option>
+                <option value="Drums">Drums</option>
+                <option value="Guitar">Guitar</option>
+                <option value="Keyboard">Keyboard</option>
+                <option value="Vocals">Vocals</option>
+            </select>
+            <br>
+            <button class="btn" type="submit">Filter</button>
+            <br><br>
+        </form>
+        <form *ngIf="searchResults.searchBy == 'genre'" (submit)="getSearchResultsFromService()">
+            <label for="searchBy">Select:</label>
+            <select name="searchBy" id="searchBy" class="browser-default" [(ngModel)]="searchResults.input">
+                <option value="Blues">Blues</option>
+                <option value="Funk">Funk</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Rock">Rock</option>
+                <option value="Ska">Ska</option>
+            </select>
+            <br>
+            <button class="btn" type="submit">Filter</button>
+            <br><br>
+        </form>
+        <form *ngIf="searchResults.searchBy == 'skill'" (submit)="getSearchResultsFromService()">
+            <label for="searchBy">Select:</label>
+            <select name="searchBy" id="searchBy" class="browser-default" [(ngModel)]="searchResults.input">
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+            </select>
+            <br>
+            <button class="btn" type="submit">Filter</button>
+            <br><br>
+        </form>
+    </div>
+</div>

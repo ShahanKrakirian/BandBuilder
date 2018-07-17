@@ -1,2 +1,14 @@
-<h2 *ngIf="loggedUser">Welcome to BandBuilder, {{loggedUser.first_name}}! Tell us a little about yourself on the next page.</h2>
-<button [routerLink]="['/profile', loggedUser.id, 'edit']" class='btn'>Continue to Edit Profile</button>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m5 offset-m4 back center-align">
+            <br>
+            <h5>Let's get started!</h5>
+            <p *ngIf="loggedUser">Welcome to BandBuilder, {{loggedUser.first_name}}! Tell us a little about yourself on the next page.</p>
+            <br>
+            <button [routerLink]="['/profile', loggedUser.id, 'edit']" class='btn'>Continue to Edit Profile</button>
+            <br><br>
+        </div>
+    </div>
+</div>

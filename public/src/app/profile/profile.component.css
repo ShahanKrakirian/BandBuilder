@@ -1,8 +1,12 @@
-div{
-    margin-left: 210px;
-}
 nav{
     border-radius: 10px;
-    opacity: .7;
-    background-color:#171717
+    right: 10px;
+    background-color: rgba(0,0,0,0);
+}
+.back{
+    background: rgba(255,255,255,.7);
+    border-radius: 10px;
+}
+hr{
+    margin: 0px 45px;
 }

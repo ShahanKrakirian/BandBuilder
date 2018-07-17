@@ -51,17 +51,20 @@ module.exports = (app) => {
     app.post('/api/addInstrument', (request, response) => {
         controller.addInstrument(request, response);
     })
-    app.post('/api/removeInstrument', (request, response) => {
-        controller.removeInstrument(request, response);
-    })
     app.post('/api/addGenre', (request, response) => {
         controller.addGenre(request, response);
     })
-    app.post('/api/removeGenre', (request, response) => {
-        controller.removeGenre(request, response);
-    })
     app.post('/api/editProfile', (request,response) => {
         controller.editProfile(request, response);
+    })
+    app.post('/api/getSearchResults', (request, response) => {
+        controller.getSearchResults(request, response);
+    })
+    app.post('/api/removeInstrument/:id', (request, response) => {
+        controller.removeInstrument(request, response);
+    })
+    app.post('/api/removeGenre/:id', (request, response) => {
+        controller.removeGenre(request, response);
     })
     app.all("*", (request, response, next) => {
         response.sendFile(path.resolve("./public/dist/public/index.html"));
