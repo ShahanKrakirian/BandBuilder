@@ -3,7 +3,9 @@
   <div class="row">
     <div class="col s12 m7 offset-m5 back  center-align">
       <br>
-      <h5>Log In to Your Account</h5>
+      <h5>Band Builder</h5>
+      <hr>
+      <h6>Login</h6>
       <br>
       <form *ngIf='userToLogin' (submit)="loginFromService()">
           <input type="text" name="email" [(ngModel)]=userToLogin.email placeholder="Email@sample.com">

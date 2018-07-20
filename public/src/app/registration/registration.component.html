@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col s12 m7 offset-m5 back  center-align">
         <br>
-        <h5>Sign Up</h5>
+        <h5>Band Builder</h5>
+        <hr>
+        <h6>Sign Up</h6>
         <br>
         <form *ngIf="userToAdd && passwordCheck" (submit)="registerFromService()">
             <input type="text" name="first_name" [(ngModel)]=userToAdd.first_name placeholder="First Name">
