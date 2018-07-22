@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const User = require('./../models/users');
+const Message = require('./../models/messages');
 const bcrypt = require('bcrypt');
 
 module.exports = {
@@ -211,5 +212,50 @@ module.exports = {
                 }
             })
         }
+    },
+
+    createMessage: (request, response) => {
+
+        console.log("Request params");
+        console.log(request.params);
+
+        //If a message exists with both of the users in "between" field, 
+        //add a message instead of create a new one. Do that here.
+
+
+
+        //If a message doesn't exist between the two: 
+
+        //START FIRST
+        User.findOne({_id: request.params.senderId}, (err, user) => {
+            if (err) {
+                console.log("Errors encountered while finding user.");
+                response.redirect('/api/index');
+            }
+            else{
+                console.log("Sucessfully found user.");
+                //START SECOND
+                User.findOne({_id: request.params.receiverId}, (err, user2) => {
+                    if (err) {
+                        console.log("Errors encountered while finding user.");
+                        response.redirect('/api/index');
+                    }
+                    else{
+                        console.log("Sucessfully found user.");
+                        Message.create({
+                            between: [user, user2], 
+                            content: [{
+                                message: "started a conversation with you!", 
+                                sender: user
+                            }]}, (err, message) => {
+                            console.log(message);
+                        }
+                    )}
+                })
+                //END SECOND
+            }
+        })
+        //END FIRST
+        response.json("Testing");
     }
 }

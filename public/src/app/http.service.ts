@@ -66,4 +66,8 @@ export class HttpService {
     return this._http.post('/api/removeGenre/' + loggedUserId, {"Genre": genre});
   }
 
+  createMessage(senderId, receiverId){
+    return this._http.get('/api/createMessage/' + senderId + "/" + receiverId);
+  }
+
 }

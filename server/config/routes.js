@@ -66,6 +66,9 @@ module.exports = (app) => {
     app.post('/api/removeGenre/:id', (request, response) => {
         controller.removeGenre(request, response);
     })
+    app.get("/api/createMessage/:senderId/:receiverId", (request, response) => {
+        controller.createMessage(request,response);
+    })
     app.all("*", (request, response, next) => {
         response.sendFile(path.resolve("./public/dist/public/index.html"));
       });

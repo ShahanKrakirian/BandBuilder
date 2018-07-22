@@ -35,4 +35,10 @@ export class VisitProfileComponent implements OnInit {
     })
   }
 
+  createMessageFromService(senderId, receiverId){
+    this._httpService.createMessage(senderId, receiverId).subscribe((data: any) => {
+      console.log(data);
+    })
+  }
+
 }

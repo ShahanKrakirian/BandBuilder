@@ -15,6 +15,7 @@
     </nav>
 </div>
 <br>
+<button class="btn" (click)="createMessageFromService(loggedUser._id, profileUser._id)">Testing</button>
 <div *ngIf="loggedUser" class="row align-center">
     <div class="col s12 m6 offset-m5 back">
         <h5 class='center-align'>{{profileUser.first_name}}'s Profile</h5>

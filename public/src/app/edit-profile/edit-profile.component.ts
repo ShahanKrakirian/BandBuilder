@@ -53,6 +53,7 @@ export class EditProfileComponent implements OnInit {
   addInstrumentFromService(){
     this._httpService.addInstrument(this.loggedUser).subscribe((data:any)=>{
       this.instruments = [];
+      this.genres = [];
       this.ngOnInit();
     })
   }
@@ -60,6 +61,7 @@ export class EditProfileComponent implements OnInit {
   addGenreFromService(){
     this._httpService.addGenre(this.loggedUser).subscribe((data:any) => {
       this.genres = [];
+      this.instruments = [];
       this.ngOnInit();
     })
   }
@@ -67,6 +69,7 @@ export class EditProfileComponent implements OnInit {
   removeInstrumentFromService(instrument){
     this._httpService.removeInstrument(instrument, this.loggedUser._id).subscribe((data: any) => {
       this.instruments = [];
+      this.genres = [];
       this.ngOnInit();
     })
   }
@@ -74,6 +77,7 @@ export class EditProfileComponent implements OnInit {
   removeGenreFromService(genre){
     this._httpService.removeGenre(genre, this.loggedUser._id).subscribe((data: any) => {
       this.genres = [];
+      this.instruments = [];
       this.ngOnInit();
     })
   }
