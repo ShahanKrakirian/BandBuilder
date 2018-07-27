@@ -216,46 +216,51 @@ module.exports = {
 
     createMessage: (request, response) => {
 
-        console.log("Request params");
-        console.log(request.params);
-
-        //If a message exists with both of the users in "between" field, 
-        //add a message instead of create a new one. Do that here.
-
-
-
-        //If a message doesn't exist between the two: 
-
-        //START FIRST
-        User.findOne({_id: request.params.senderId}, (err, user) => {
-            if (err) {
-                console.log("Errors encountered while finding user.");
-                response.redirect('/api/index');
-            }
-            else{
-                console.log("Sucessfully found user.");
-                //START SECOND
-                User.findOne({_id: request.params.receiverId}, (err, user2) => {
-                    if (err) {
-                        console.log("Errors encountered while finding user.");
-                        response.redirect('/api/index');
-                    }
-                    else{
-                        console.log("Sucessfully found user.");
-                        Message.create({
-                            between: [user, user2], 
-                            content: [{
-                                message: "started a conversation with you!", 
-                                sender: user
-                            }]}, (err, message) => {
-                            console.log(message);
+        //If we're creating a new chat or loading a page for the first time
+        if (request.body.bool == true){
+            //Loading chat
+            Message.findOne({between: { $all: [request.params.senderId, request.params.receiverId] } }, (err, messageFound) => {
+                if (messageFound){
+                    response.json(messageFound);
+                } else {
+                    //Get sender object
+                    User.findOne({_id: request.params.senderId}, (err, user) => {
+                        if (user){
+                            //Create chat
+                            Message.create({
+                                between: [request.params.senderId, request.params.receiverId], 
+                                content: [{
+                                    message: "Band Builder Chat!", 
+                                    sender: user.first_name }]}, (err, message) => {
+                                       if (err){
+                                           response.json({message: "Error"});
+                                       } else {
+                                           response.json(message);
+                                }
+                           })
                         }
-                    )}
-                })
-                //END SECOND
-            }
-        })
-        //END FIRST
-        response.json("Testing");
+                    })
+                }})   
+        } else {
+            //If the chat exists and we're adding a message
+            //Get sender object
+            User.findOne({_id: request.params.senderId}, (err, user) => {
+                if (user){
+                    //Find the chat
+                    Message.findOne({between: { $all: [request.params.senderId, request.params.receiverId] } }, (err, message) => {
+                        if (message){
+                            //Update with new message
+                            Message.findOneAndUpdate({_id: message._id}, {$push: {content: {message: request.body.messageBody, sender: user.first_name}}}, {new: true}, (err, updated) => {
+                                if (err){
+                                    response.json({message: "Error updating"});
+                                } else {
+                                    response.json(updated);
+                                }
+                            })
+                        }
+                    }
+                )}
+            })
+        }
     }
 }

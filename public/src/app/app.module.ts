@@ -26,7 +26,7 @@ import { VisitProfileComponent } from './visit-profile/visit-profile.component';
     EditProfileComponent,
     ProfileWelcomeComponent,
     ProfileComponent,
-    VisitProfileComponent
+    VisitProfileComponent,
   ],
   imports: [
     HttpClientModule,

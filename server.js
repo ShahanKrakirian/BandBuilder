@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const http = require('http').Server(app);
 const path = require('path');
 const bodyParser = require('body-parser');
 const flash = require('express-flash');
@@ -24,3 +25,4 @@ require('./server/config/routes')(app);
 var server = app.listen(6789, () => {
     console.log("Listening on 6789");
 })
+
