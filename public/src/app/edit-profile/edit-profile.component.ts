@@ -40,7 +40,7 @@ export class EditProfileComponent implements OnInit {
 
   logoutFromService(){
     this._httpService.logout().subscribe((data:any) => {
-      this._router.navigate(['/login']);
+      this._router.navigate(['/register']);
     })
   }
 
