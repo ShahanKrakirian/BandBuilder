@@ -13,6 +13,8 @@ export class RegistrationComponent implements OnInit {
   userToAdd: any;
   errors = [];
   loginreg: any;
+  userToLogin: any;
+  loginFlag: any;
 
   constructor(
     private _httpService: HttpService,
@@ -21,12 +23,16 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginFlag = {status: false};
     this.userToAdd = {first_name: '', last_name: '', email: '', password: '', skill: 'Beginner'};
+    this.passwordCheck = {password: '', confirm_password: ''};
+    this.userToLogin = {email: '', password: ''};
     navigator.geolocation.getCurrentPosition(data => {
       this.userToAdd.latitude = data.coords.latitude;
       this.userToAdd.longitude = data.coords.longitude;
+      this.userToLogin.latitude = data.coords.latitude;
+      this.userToLogin.longitude = data.coords.longitude;
       })
-    this.passwordCheck = {password: '', confirm_password: ''};
   }
 
   goToLogin(){
@@ -51,5 +57,22 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.errors.push("Passwords don't match.");
     }
+  }
+
+  loginFromService(){
+    this.errors=[];
+    this._httpService.login(this.userToLogin).subscribe((data: any) => {
+      if (data.errors) {
+        this.errors.push(data.errors);
+      }
+      else{
+        this._router.navigate(['/home']);
+      }
+    })
+  }
+
+  changeLoginFlag(){
+    this.loginFlag.status = !this.loginFlag.status;
+    this.errors = [];
   }
 }

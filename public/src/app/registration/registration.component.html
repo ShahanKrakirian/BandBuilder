@@ -1,13 +1,14 @@
-<div class="container">
-    <div class="row height hide-on-small-only"></div>
+<div class="image width">
+  <br><br>
     <div class="row">
-      <div class="col s12 m7 offset-m5 back  center-align">
+      <div class="col s12 m3 offset-m6 back center-align">
         <br>
         <h5>Band Builder</h5>
         <hr>
-        <h6>Sign Up</h6>
         <br>
-        <form *ngIf="userToAdd && passwordCheck" (submit)="registerFromService()">
+        <a *ngIf="!loginFlag.status" (click)="changeLoginFlag()">Login</a><span *ngIf="!loginFlag.status">&nbsp;&nbsp;</span><a *ngIf="loginFlag.status" class="center-align" (click)="changeLoginFlag()">Register</a>
+        <br>
+        <form *ngIf="userToAdd && passwordCheck && !loginFlag.status" (submit)="registerFromService()">
             <input type="text" name="first_name" [(ngModel)]=userToAdd.first_name placeholder="First Name">
             <input type="text" name="last_name" [(ngModel)]=userToAdd.last_name placeholder="Last Name">
             <input type="text" name="email" [(ngModel)]=userToAdd.email placeholder="Email@sample.com">
@@ -21,11 +22,17 @@
             <br>
             <button class='btn' type='submit'>Register</button>
             <br><br>
-            <p>Already have an account? Login <a (click)="goToLogin()">here.</a></p>
-            <br>
             <p *ngFor="let error of errors">{{error}}</p>
             <br>
         </form>
+        <form *ngIf='userToLogin && loginFlag.status' (submit)="loginFromService()">
+          <input type="text" name="email" [(ngModel)]=userToLogin.email placeholder="Email@sample.com">
+          <input type="password" name="password" [(ngModel)]=userToLogin.password placeholder="Password">
+          <button type='submit' class='btn'>Login</button>
+          <br><br>
+          <p *ngFor="let error of errors">{{error}}</p>
+          <br>
+      </form>
       </div>
     </div>
   </div>

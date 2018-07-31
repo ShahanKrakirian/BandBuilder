@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
   logoutFromService(){
     this._httpService.logout().subscribe(data => {
       if (data) {
-        this._router.navigate(['/login']);
+        this._router.navigate(['/register']);
       }
     })
   }

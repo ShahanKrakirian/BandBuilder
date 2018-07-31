@@ -15,9 +15,8 @@
     </nav>
 </div>
 <br>
-<button class="btn" (click)="createMessageFromService(loggedUser._id, profileUser._id)">Testing</button>
-<div *ngIf="loggedUser" class="row align-center">
-    <div class="col s12 m6 offset-m5 back">
+<div *ngIf="profileUser" class="row center-align">
+    <div class="col s12 m5 back">
         <h5 class='center-align'>{{profileUser.first_name}}'s Profile</h5>
         <hr>
         <br>
@@ -41,7 +40,7 @@
             <tr>
                 <td>Instruments:</td>
                 <td>
-                    <ul>
+                    <ul *ngIf="profileUser">
                         <li *ngFor="let instrument of profileUser.instruments">{{instrument}}</li>
                     </ul>
                 </td>
@@ -49,11 +48,23 @@
             <tr>
                 <td>Genres:</td>
                 <td>
-                    <ul>
+                    <ul *ngIf="profileUser">
                         <li *ngFor="let genre of profileUser.genres">{{genre}}</li>
                     </ul>
                 </td>
             </tr>            
         </table>
     </div>
+    <div class="col s12 m5 offset-m1 back overflow">
+        <h5 class="center-align" >Chatting with {{profileUser.first_name}}</h5>
+        <hr>
+        <p *ngFor="let message of messages">{{message.sender}}: {{message.message}}</p>
+    </div>
+    <br>
+    <form class="col s12 m5 offset-m6 back" (submit)="createMessageFromService(loggedUser._id, profileUser._id, false)">
+        <input type="text" name="message" [(ngModel)]=messageToAdd.body>
+        <button class="btn center-align" type="submit">Send Message</button>
+        <br><br>
+    </form>
 </div>
+

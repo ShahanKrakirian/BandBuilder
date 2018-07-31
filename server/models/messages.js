@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 var messageSchema = new mongoose.Schema({
-    between: [{}],
+    between: [String],
     content: [{
         message: String,
-        sender: {}
+        sender: String
     }]
 }, {timestamps: true});
 
