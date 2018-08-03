@@ -44,3 +44,52 @@ ul.li{
 li{
   margin: 10px 0px;
 }
+.image2 {
+  background-image: url('https://static1.squarespace.com/static/516f30c9e4b06a85f4f2d0f1/t/569e836589a60ac11efb74d2/1453228903090/?format=750w');
+  background-size: 100% 100%;
+  height:200px;
+  width:300px;
+}
+.image3 {
+  background-image: url('https://3m84r11gpx1j11puas2g5wfl-wpengine.netdna-ssl.com/wp-content/uploads/2017/06/1TheStrokes.jpg');
+  background-size: 100% 100%;
+  height:200px;
+}
+.down{
+  margin-top:20px;
+}
+.move-left{
+  margin-right: 40px;
+}
+.move-right{
+  margin-left: 40px;
+}
+.fa-cog {
+  color: black;
+  font-size:30px;
+}
+.size{
+  color: black;
+  font-size: 30px;
+}
+.inline-block{
+  display:inline-block;
+}
+img{
+  margin-top:12px;
+  height:34px;
+  width:30px;
+}
+.li{
+  display:inline;
+  margin-left:10px;
+}
+.move-right-250{
+  margin-left:250px;
+}
+.down-5{
+  margin-top:5px;
+}
+.footer{
+  background-color: #c7c7b9;
+}

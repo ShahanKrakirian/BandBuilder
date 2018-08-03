@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { } from '@types/googlemaps'
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -15,6 +16,7 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ProfileWelcomeComponent } from './profile-welcome/profile-welcome.component';
 import { ProfileComponent } from './profile/profile.component';
 import { VisitProfileComponent } from './visit-profile/visit-profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { VisitProfileComponent } from './visit-profile/visit-profile.component';
     FormsModule,
     MaterializeModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
