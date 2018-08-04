@@ -37,10 +37,6 @@ hr{
 .left{
   text-align:left;
 }
-ul.li{
-  display: list-item;
-  list-style-type: circle;
-}
 li{
   margin: 10px 0px;
 }

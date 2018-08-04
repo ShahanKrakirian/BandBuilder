@@ -1,6 +1,6 @@
 #map-canvas{
     height: 400px;
-    width: 400px;
+    width: 100%;
 }
 h3{
     color:white;
@@ -22,12 +22,54 @@ label{
     margin-top: 60px;
 }
 a{
-    color:white;
+    color:black;
 }
 .back{
     background: rgba(255,255,255,.7);
     border-radius: 10px;
 }
 hr{
-    margin: 0px 65px;
+    margin: 0px 33%;
+}
+.footer{
+    background-color: #c7c7b9;
+}
+.move-right-250{
+    margin-left:250px;
+}
+.down-5{
+    margin-top:5px;
+}
+.inline-block{
+    display:inline-block;
+}
+.fa-cog {
+    color: black;
+    font-size:30px;
+  }
+.down{
+    margin-top:20px;
+}
+.move-left{
+    margin-right: 40px;
+}
+.move-right{
+    margin-left: 40px;
+}
+.size{
+    color: black;
+    font-size: 30px;
+}
+div{
+    text-align:center;
+}
+.li{
+    display:inline;
+    margin-left:10px;
+}
+.color{
+      background-color:#c7c7b9;
+}
+.invisible{
+    display:none;
 }
