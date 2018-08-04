@@ -45,7 +45,6 @@
                 <option value="Keyboard">Keyboard</option>
                 <option value="Vocals">Vocals</option>
             </select>
-            <!-- <button class="btn" type="submit">Filter</button> -->
         </form>
         <form id="form" *ngIf="searchResults.searchBy == 'genre'" (submit)="getSearchResultsFromService()">
             <label for="searchBy">Select:</label>
@@ -56,7 +55,6 @@
                 <option value="Rock">Rock</option>
                 <option value="Ska">Ska</option>
             </select>
-            <!-- <button class="btn" type="submit">Filter</button> -->
         </form>
         <form id="form" *ngIf="searchResults.searchBy == 'skill'" (submit)="getSearchResultsFromService()">
             <label for="searchBy">Select:</label>
@@ -65,75 +63,16 @@
                 <option value="Intermediate">Intermediate</option>
                 <option value="Advanced">Advanced</option>
             </select>
-            <!-- <button class="btn" type="submit">Filter</button> -->
         </form>
     </div>
 </div>
 <div class="row container">
+    <!--Submit button for all three forms-->
     <button class="btn btn-sm s2 offset-s5" type="submit" form="form">Filter</button>
     <br><br>
     <div id="map-canvas"></div>
 </div>
-
-
-
-
-
-    <!-- <div class="col s12 m6 l5 center-align back">
-        <br>
-        <p *ngIf="noResults" class="align-right">No results found.</p>
-        <div class="row align-center">
-            <h5>Find Your BandMates</h5>
-            <hr>
-        </div>
-        <label for="searchBy">Filter By:</label>
-        <select id="searchBy" class="browser-default" [(ngModel)]="searchResults.searchBy">
-            <option value="instrument">Instrument</option>
-            <option value="genre">Genre</option>
-            <option value="skill">Skill Level (Beginner, Intermediate, Advanced)</option>
-        </select>
-        <br><br>
-        <form *ngIf="searchResults.searchBy == 'instrument'" (submit)="getSearchResultsFromService()">
-            <label for="searchBy">Select:</label>
-            <select name="searchBy" id="searchBy" class="browser-default" [(ngModel)]="searchResults.input">
-                <option value="Bass">Bass</option>
-                <option value="Drums">Drums</option>
-                <option value="Guitar">Guitar</option>
-                <option value="Keyboard">Keyboard</option>
-                <option value="Vocals">Vocals</option>
-            </select>
-            <br>
-            <button class="btn" type="submit">Filter</button>
-            <br><br>
-        </form>
-        <form *ngIf="searchResults.searchBy == 'genre'" (submit)="getSearchResultsFromService()">
-            <label for="searchBy">Select:</label>
-            <select name="searchBy" id="searchBy" class="browser-default" [(ngModel)]="searchResults.input">
-                <option value="Blues">Blues</option>
-                <option value="Funk">Funk</option>
-                <option value="Jazz">Jazz</option>
-                <option value="Rock">Rock</option>
-                <option value="Ska">Ska</option>
-            </select>
-            <br>
-            <button class="btn" type="submit">Filter</button>
-            <br><br>
-        </form>
-        <form *ngIf="searchResults.searchBy == 'skill'" (submit)="getSearchResultsFromService()">
-            <label for="searchBy">Select:</label>
-            <select name="searchBy" id="searchBy" class="browser-default" [(ngModel)]="searchResults.input">
-                <option value="Beginner">Beginner</option>
-                <option value="Intermediate">Intermediate</option>
-                <option value="Advanced">Advanced</option>
-            </select>
-            <br>
-            <button class="btn" type="submit">Filter</button>
-            <br><br>
-        </form>
-    </div>
-</div> -->
 <!--End main content-->
-<!--End Row-->
 <!--Footer-->
 <div class="row footer">
     <div class="col s12 m4 move-right down-5">
@@ -158,3 +97,4 @@
         </li>
       </ul>
   </div>
+</div>

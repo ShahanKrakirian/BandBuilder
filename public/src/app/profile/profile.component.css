@@ -10,3 +10,33 @@ nav{
 hr{
     margin: 0px 45px;
 }
+.color{
+    background-color:#c7c7b9;
+}
+.li{
+    display:inline;
+    margin-left:10px;
+}
+.size{
+    color: white;
+    font-size: 30px;
+}
+.down-5{
+    margin-top:5px;
+}
+.inline-block{
+    display:inline-block;
+}
+.fa-cog {
+    color: white;
+    font-size:30px;
+}
+.move-right{
+    margin-left: 40px;
+}
+.footer{
+    background-color: #c7c7b9;
+}
+div{
+    text-align:center;
+}

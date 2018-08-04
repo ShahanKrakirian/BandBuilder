@@ -1,6 +1,6 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed color">
     <nav *ngIf="loggedUser">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper color">
             <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
             <ul class="right hide-on-small-and-down">
                 <li><a [routerLink]="['/profile', loggedUser._id, 'edit']">Edit Profile</a></li>
@@ -54,5 +54,30 @@
                 </td>
             </tr>            
         </table>
+    </div>
+</div>
+<!--Footer-->
+<div class="row footer">
+    <div class="col s12 m4 move-right down-5">
+        <p class="left-align inline-block">Created by Shahan Krakirian</p>
+    </div>
+    <div class="col s12 m4">
+        <ul>
+        <li class="list-inline-item li hoverable">
+            <a href="https://www.linkedin.com/in/shahan-krakirian/">
+            <i class="fab fa-cog fa-linkedin"></i>
+            </a>
+        </li>
+        <li class="list-inline-item li hoverable">
+            <a href="https://github.com/ShahanKrakirian">
+            <i class="fab fa-cog fa-github"></i>
+            </a>
+        </li>
+        <li class="list-inline-item li hoverable">
+            <a href="https://www.shahankrakirian.com/">
+            <i class="fab size fa-chrome"></i>
+            </a>
+        </li>
+        </ul>
     </div>
 </div>
