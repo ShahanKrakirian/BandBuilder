@@ -23,7 +23,7 @@ label{
     margin-top: 60px;
 }
 a{
-    color:black;
+    color:white;
 }
 .back{
     background: rgba(255,255,255,.7);
@@ -33,7 +33,7 @@ hr{
     margin: 0px 33%;
 }
 .footer{
-    background-color: #c7c7b9;
+    background-color: #a9a99c;
     color:white;
 }
 .move-right-250{
@@ -70,5 +70,5 @@ div{
     margin-left:10px;
 }
 .color{
-      background-color:#c7c7b9;
+      background-color:#a9a99c;
 }
