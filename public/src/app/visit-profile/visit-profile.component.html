@@ -1,6 +1,6 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed color">
     <nav *ngIf="loggedUser">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper color">
             <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
             <ul class="right hide-on-small-and-down">
                 <li><a [routerLink]="['/profile', loggedUser._id]">Profile</a></li>
@@ -16,7 +16,7 @@
 </div>
 <br>
 <div *ngIf="profileUser" class="row center-align">
-    <div class="col s12 m5 back">
+    <div class="col s12 m6 offset-m3 back border">
         <h5 class='center-align'>{{profileUser.first_name}}'s Profile</h5>
         <hr>
         <br>
@@ -55,16 +55,43 @@
             </tr>            
         </table>
     </div>
-    <div class="col s12 m5 offset-m1 back overflow">
+</div>
+<div class="row">
+    <div class="col s12 m6 offset-m3 border back overflow">
         <h5 class="center-align" >Chatting with {{profileUser.first_name}}</h5>
         <hr>
         <p *ngFor="let message of messages">{{message.sender}}: {{message.message}}</p>
     </div>
     <br>
-    <form class="col s12 m5 offset-m6 back" (submit)="createMessageFromService(loggedUser._id, profileUser._id, false)">
-        <input type="text" name="message" [(ngModel)]=messageToAdd.body>
+    <form class="col s12 m6 offset-m3 back" (submit)="createMessageFromService(loggedUser._id, profileUser._id, false)">
+        <input type="text" name="message" [(ngModel)]=messageToAdd.body placeholder="Get chattin'">
         <button class="btn center-align" type="submit">Send Message</button>
         <br><br>
     </form>
 </div>
-
+<!--End Main Content-->
+<!--Footer-->
+<div class="row footer">
+        <div class="col s12 m4 move-right down-5">
+            <p class="left-align inline-block">Created by Shahan Krakirian</p>
+        </div>
+        <div class="col s12 m4">
+            <ul>
+            <li class="list-inline-item li hoverable">
+                <a href="https://www.linkedin.com/in/shahan-krakirian/">
+                <i class="fab fa-cog fa-linkedin"></i>
+                </a>
+            </li>
+            <li class="list-inline-item li hoverable">
+                <a href="https://github.com/ShahanKrakirian">
+                <i class="fab fa-cog fa-github"></i>
+                </a>
+            </li>
+            <li class="list-inline-item li hoverable">
+                <a href="https://www.shahankrakirian.com/">
+                <i class="fab size fa-chrome"></i>
+                </a>
+            </li>
+            </ul>
+        </div>
+    </div>

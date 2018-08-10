@@ -42,3 +42,7 @@ hr{
 div{
     text-align:center;
 }
+.border{
+    border: 2px solid #a9a99c;
+    border-radius:10px;
+}

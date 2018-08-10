@@ -61,11 +61,11 @@ li{
   margin-left: 40px;
 }
 .fa-cog {
-  color: black;
+  color: white;
   font-size:30px;
 }
 .size{
-  color: black;
+  color: white;
   font-size: 30px;
 }
 .inline-block{
@@ -87,5 +87,8 @@ img{
   margin-top:5px;
 }
 .footer{
-  background-color: #c7c7b9;
+  background-color: #a9a99c;
+}
+p{
+  color: white;
 }

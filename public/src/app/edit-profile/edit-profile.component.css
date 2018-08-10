@@ -10,6 +10,7 @@ nav{
     border-radius: 10px;
     right: 10px;
     background-color: rgba(0,0,0,0);
+    color:white;
 }
 .back{
     background: rgba(255,255,255,.7);
@@ -30,4 +31,51 @@ td, th{
     text-align: left;
     vertical-align:middle;
     border-radius:2px;
+}
+.color{
+    background-color:#a9a99c;
+}
+hr{
+    margin: 0px 33%;
+}
+.footer{
+    background-color: #a9a99c;
+    color:white;
+}
+.move-right-250{
+    margin-left:250px;
+}
+.down-5{
+    margin-top:5px;
+}
+.inline-block{
+    display:inline-block;
+}
+.fa-cog {
+    color: white;
+    font-size:30px;
+}
+.down{
+    margin-top:20px;
+}
+.move-left{
+    margin-right: 40px;
+}
+.move-right{
+    margin-left: 40px;
+}
+.size{
+    color: white;
+    font-size: 30px;
+}
+.li{
+    display:inline;
+    margin-left:10px;
+}
+div{
+    text-align:center;
+}
+.border{
+    border: 2px solid #a9a99c;
+    border-radius:10px;
 }

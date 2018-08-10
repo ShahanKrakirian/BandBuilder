@@ -1,6 +1,6 @@
-<div class="navbar-fixed">
+<div class="navbar-fixed color">
     <nav *ngIf="loggedUser">
-        <div class="nav-wrapper">
+        <div class="nav-wrapper color">
             <a href="/home" class="brand-logo center hide-on-small-and-down">BandBuilder</a>
             <ul class="right hide-on-small-and-down">
                 <li><a [routerLink]="['/profile/', loggedUser._id]">Profile</a></li>
@@ -16,7 +16,7 @@
 </div>
 
 <div *ngIf="loggedUser" class="row up">
-    <div class="col s12 m5 back">
+    <div class="col s12 m6 offset-m3 back border">
         <br>
         <h5>Edit Profile</h5>
         <form (submit)="editProfileFromService(loggedUser)">
@@ -40,7 +40,9 @@
         </form>
         <br>
     </div>
-    <div class="col s12 m6 offset-m1 back">
+</div>  
+<div class="row">
+    <div class="col s12 m6 offset-m3 back border">
         <br>
         <h5>Edit Instruments</h5>
         <br>
@@ -76,3 +78,29 @@
         <br><br>
     </div>
 </div>
+<!--End Main Content-->
+<!--Footer-->
+<div class="row footer">
+        <div class="col s12 m4 move-right down-5">
+          <p class="left-align inline-block">Created by Shahan Krakirian</p>
+        </div>
+        <div class="col s12 m4">
+          <ul>
+            <li class="list-inline-item li hoverable">
+              <a href="https://www.linkedin.com/in/shahan-krakirian/">
+                <i class="fab fa-cog fa-linkedin"></i>
+              </a>
+            </li>
+            <li class="list-inline-item li hoverable">
+              <a href="https://github.com/ShahanKrakirian">
+                <i class="fab fa-cog fa-github"></i>
+              </a>
+            </li>
+            <li class="list-inline-item li hoverable">
+              <a href="https://www.shahankrakirian.com/">
+                <i class="fab size fa-chrome"></i>
+              </a>
+            </li>
+          </ul>
+      </div>
+    </div>
